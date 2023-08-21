@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо реализовать четыре функции, каждая функция должна принимать по два
@@ -28,10 +30,56 @@
 
 Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    const a = +prompt("Введите первое число: ");
+    const b = +prompt("Введите второе число: ");
+
+    console.log(sum(a, b));
+    console.log(difference(a, b));
+    console.log(multiplication(a, b));
+    console.log(division(a, b));
+
+    /** Функция возвращает сумму двух чисел
+     * @param {number} a - первое число
+     * @param {number} b - второе число
+     * @return {number} сумма чисел
+    */
+    function sum(a, b) {
+      return a + b;
+    }
+
+    /** Функция возвращает разность двух чисел
+     * @param {number} a - первое число
+     * @param {number} b - второе число
+     * @return {number} разность чисел
+    */
+    function difference(a, b) {
+      if (a > b) {
+        return a - b;
+      }
+      return b - a;
+    }
+
+    /** Функция возвращает произведение двух чисел
+     * @param {number} a - первое число
+     * @param {number} b - второе число
+     * @return {number} произведение чисел
+    */
+    function multiplication(a, b) {
+      return a * b;
+    }
+
+    /** Функция возвращает частное двух чисел
+     * @param {number} a - первое число
+     * @param {number} b - второе число
+     * @return {number} частное чисел
+    */
+    function division(a, b) {
+      return a / b;
+    }
+  </script>
 </body>
+
 </html>
