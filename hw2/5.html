@@ -48,18 +48,13 @@ Infinity делать не нужно, однако, в случае если б
      * @return {number} результат операции двух чисел
      */
     function mathOperation(arg1, arg2, operation) {
-      if (operation === "+") {
-        return sum(arg1, arg2);
-      } else if (operation === "-") {
-        return difference(arg1, arg2);
-      } else if (operation === "*") {
-        return multiplication(arg1, arg2);
-      } else if (operation === "/") {
-        return division(arg1, arg2);
-      } else {
-        return NaN;
+      switch (operation) {
+        case "+": return sum(arg1, arg2);
+        case "-": return difference(arg1, arg2);
+        case "*": return multiplication(arg1, arg2);
+        case "/": return division(arg1, arg2);
+        default: return NaN;
       }
-
     }
 
     /** Функция возвращает сумму двух чисел
