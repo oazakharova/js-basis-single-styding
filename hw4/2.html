@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Необязательное задание, но желательно сделать.
 
 Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
@@ -47,10 +49,81 @@
 что-нибудь пропустить.
 4. Если непонятно условие - задайте вопрос.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    function PostES5(postAuthor, postText) {
+      this.postAuthor = postAuthor;
+      this.postText = postText;
+      this.postDate = new Date();
+    }
+
+    PostES5.prototype.edit = function (postTextUpdated) {
+      this.postText = postTextUpdated;
+      this.postDate = new Date();
+    }
+
+    class PostES6 {
+      constructor(postAuthor, postText) {
+        this.postAuthor = postAuthor;
+        this.postText = postText;
+        this.postDate = new Date();
+      }
+
+      edit(postTextUpdated) {
+        this.postText = postTextUpdated;
+        this.postDate = new Date();
+      }
+    }
+
+    let post1 = new PostES5("Olga", "Hello world");
+    console.log(post1);
+    post1.edit("Hello super world");
+    console.log(post1);
+
+    let post2 = new PostES6("Alex", "Hola amigos");
+    console.log(post2);
+    post2.edit("Buenas tardes amigos");
+    console.log(post2);
+
+
+    function AttachedPostES5(postAuthor, postText) {
+      PostES5.call(this, postAuthor, postText);
+      this.highlighted = false;
+    }
+
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+      this.highlighted = true;
+    }
+
+
+    class AttachedPostES6 extends PostES6 {
+      constructor(postAuthor, postText) {
+        super(postAuthor, postText);
+        this.highlighted = false;
+      }
+
+      makeTextHighlighted() {
+        this.highlighted = true;
+      }
+    }
+
+
+    let postAttached1 = new AttachedPostES5("Olga", "New attached post");
+    console.log(postAttached1);
+    postAttached1.makeTextHighlighted();
+    postAttached1.edit("New attached post has been changed");
+    console.log(postAttached1);
+
+    let postAttached2 = new AttachedPostES5("Alex", "New attached post");
+    console.log(postAttached1);
+    postAttached1.makeTextHighlighted();
+    postAttached1.edit("New attached post has been changed");
+    console.log(postAttached1);
+  </script>
 </body>
+
 </html>
